@@ -24,7 +24,7 @@
     <protected-broadcast android:name="org.evolution.oplus.OPlusExtras.touch.UPDATE_SETTINGS" />
 
     <application
-        android:icon="@drawable/ic_launcher_settings"
+        android:icon="@drawable/ic_logo"
         android:label="@string/oplus_extras_title"
         android:defaultToDeviceProtectedStorage="true"
         android:directBootAware="true"
@@ -41,7 +41,7 @@
             </intent-filter>
             <meta-data
                 android:name="com.android.settings.icon"
-                android:resource="@drawable/ic_oplus_extras" />
+                android:resource="@drawable/ic_logo" />
             <meta-data
                 android:name="com.android.settings.category"
                 android:value="com.android.settings.category.ia.homepage" />
@@ -58,7 +58,7 @@
 
         <!-- Boot reciever -->
         <receiver android:name=".Startup"
-            android:exported="false">  
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
             </intent-filter>
