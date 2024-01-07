@@ -11,7 +11,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import org.lineageos.settings.refreshrate.RefreshUtils;
+import org.evolution.oplus.OPlusExtras.refreshrate.RefreshUtils;
 
 import org.evolution.oplus.OPlusExtras.doze.DozeUtils;
 import org.evolution.oplus.OPlusExtras.kcal.Kcal;
