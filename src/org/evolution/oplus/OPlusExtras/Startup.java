@@ -11,6 +11,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import org.lineageos.settings.refreshrate.RefreshUtils;
 
 import org.evolution.oplus.OPlusExtras.doze.DozeUtils;
 import org.evolution.oplus.OPlusExtras.kcal.Kcal;
@@ -53,5 +54,6 @@ public class Startup extends BroadcastReceiver {
             Kcal.restoreValueSetting(context);
             // Touchgestures
             TouchscreenGestureSettings.MainSettingsFragment.restoreTouchscreenGestureStates(context);
+            RefreshUtils.startService(context);
     }
 }
