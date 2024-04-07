@@ -10,16 +10,15 @@ import android.app.AlertDialog
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.widget.Switch
+import android.widget.CompoundButton
 import androidx.preference.*
 
 import com.android.settingslib.widget.MainSwitchPreference
-import com.android.settingslib.widget.OnMainSwitchChangeListener
 
 import org.evolution.oplus.OPlusExtras.R;
 
 class DozeSettingsFragment : PreferenceFragment(), Preference.OnPreferenceChangeListener,
-    OnMainSwitchChangeListener {
+    CompoundButton.OnCheckedChangeListener {
     private lateinit var alwaysOnDisplayPreference: SwitchPreference
     private lateinit var switchBar: MainSwitchPreference
 
@@ -53,13 +52,13 @@ class DozeSettingsFragment : PreferenceFragment(), Preference.OnPreferenceChange
         alwaysOnDisplayPreference.onPreferenceChangeListener = this
 
         val pickupSensorCategory =
-            preferenceScreen.findPreference<PreferenceCategory>(DozeUtils.CATEGORY_PICKUP_SENSOR)
+            preferenceScreen.findPreference<PreferenceCategory>(DozeUtils.CATEGORY_PICKUP_SENSOR)!!
         if (getString(R.string.pickup_sensor_type).isEmpty()) {
             preferenceScreen.removePreference(pickupSensorCategory)
         }
 
         val proximitySensorCategory =
-            preferenceScreen.findPreference<PreferenceCategory>(DozeUtils.CATEGORY_PROXIMITY_SENSOR)
+            preferenceScreen.findPreference<PreferenceCategory>(DozeUtils.CATEGORY_PROXIMITY_SENSOR)!!
         if (getString(R.string.pocket_sensor_type).isEmpty()) {
             preferenceScreen.removePreference(proximitySensorCategory)
         }
@@ -76,8 +75,8 @@ class DozeSettingsFragment : PreferenceFragment(), Preference.OnPreferenceChange
         if (!DozeUtils.alwaysOnDisplayAvailable(context)) {
             preferenceScreen.removePreference(alwaysOnDisplayPreference)
         } else {
-            pickupSensorCategory?.dependency = DozeUtils.ALWAYS_ON_DISPLAY
-            proximitySensorCategory?.dependency = DozeUtils.ALWAYS_ON_DISPLAY
+            pickupSensorCategory.dependency = DozeUtils.ALWAYS_ON_DISPLAY
+            proximitySensorCategory.dependency = DozeUtils.ALWAYS_ON_DISPLAY
         }
     }
 
@@ -89,7 +88,7 @@ class DozeSettingsFragment : PreferenceFragment(), Preference.OnPreferenceChange
         return true
     }
 
-    override fun onSwitchChanged(switchView: Switch, isChecked: Boolean) {
+    override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
         DozeUtils.enableDoze(context, isChecked)
         DozeUtils.checkDozeService(context)
 

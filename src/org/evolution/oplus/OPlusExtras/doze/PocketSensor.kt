@@ -18,7 +18,7 @@ import java.util.concurrent.Executors
 class PocketSensor(
     private val context: Context, sensorType: String, private val sensorValue: Float
 ) : SensorEventListener {
-    private val sensorManager = context.getSystemService(SensorManager::class.java)
+    private val sensorManager = context.getSystemService(SensorManager::class.java)!!
     private val sensor = DozeUtils.getSensor(sensorManager, sensorType)
 
     private val executorService = Executors.newSingleThreadExecutor()

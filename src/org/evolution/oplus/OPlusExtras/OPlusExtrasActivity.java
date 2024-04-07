@@ -22,7 +22,6 @@ import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceManager;
 
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
-import com.android.settingslib.widget.R;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -42,7 +41,7 @@ public class OPlusExtrasActivity extends CollapsingToolbarBaseActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getFragmentManager().beginTransaction().replace(R.id.content_frame,
+        getFragmentManager().beginTransaction().replace(com.android.settingslib.collapsingtoolbar.R.id.content_frame,
                 new OPlusExtras(), TAG).commit();
 
         mShakeUtils = new ShakeUtils(this);
